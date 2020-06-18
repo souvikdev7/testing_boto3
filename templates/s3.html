@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="">
+    <div>        
+        <div style="min-height: 350px;">
+            <div>                
+                 <div>
+                    <p></p>
+                    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+                        {% if messages %}
+                        <div class="alert alert-danger" role="alert">
+                            <ul class=flashes>
+                            {% for message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul></div>
+                        {% endif %}
+                    {% endwith %}
+                    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+                        {% if messages %}
+                        <div class="alert alert-success" role="alert">
+                            <ul class=flashes>
+                            {% for message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul></div>
+                        {% endif %}
+                    {% endwith %} 
+                    <br/> 
+                 </div> 
+                <div>
+                    {% if mdata.task == 1 %}                 
+                      
+                        <h3>Add Bucket</h3>
+                        <form action="task1" method="POST" class="php-email-form">                        
+                            <br/>
+                            <label for="lname">Bucket </label><br/>
+                                <input type="text" id="bname" name="bname" class="form-control" required>
+                                <br/>
+                                <label for="region">Region</label>    <br/>
+                                <input type="text" name="region" class="form-control" required>
+                                <br/>   <br/>   
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </form>
+                        
+
+                    {% elif mdata.task == 2 %}
+                        <h3>Bucket List</h3>
+
+                            {% if mdata.length > 0 %}  
+                            <ul>        
+                                {% for x in mdata.response %}
+                                    <li>{{x['Name']}} &nbsp; ||  &nbsp;{{x['CreationDate']}} </li>
+                                {% endfor %}
+                            </ul>       
+                            {% else %}    
+                            <p>No buckets found.</p> {% endif %}  
+
+                    {% elif mdata.task == 3 %}   
+                    <h3>Upload file to bucket</h3>                    
+                        
+                        <form action="task3" method="POST" enctype="multipart/form-data" class="php-email-form">                        
+                            <br/>
+                                <label for="lname">Bucket Name</label>
+                                <input type="text" id="bname" name="bname" class="form-control" required>
+                                <br/>   
+                                <label for="lname">File (Only pdf , png , jpg , jpeg & gif allowed & max size 16 MB) </label>    
+                                <input type="file"  name="file" class="form-control-file" required>
+                                <br/>  <br/>   
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </form>
+                        
+                    {% elif mdata.task == 4 %}   
+                        <h3>Copy file from one bucket to another</h3>                    
+                        
+                            <form action="task4" method="POST" class="php-email-form">                        
+                                <br/>
+                                    <label for="">Source Bucket Name</label>
+                                    <input type="text"  name="sbname" class="form-control" required>
+                                    <br/>   
+                                    <label for="">Destination Bucket Name</label>
+                                    <input type="text"  name="dbname" class="form-control" required>
+                                    <br/> 
+                                    <label for="">File Name</label>    
+                                    <input type="text"  name="fname" class="form-control" required>
+                                    <br/>  <br/>   
+                                <input type="submit" class="btn btn-primary" value="Submit">
+                            </form>
+                    
+                    {% elif mdata.task == 5 %}   
+                    <h3>Upload all files from a folder to bucket</h3>                    
+                        
+                        <form action="task5" method="POST"  class="php-email-form">                        
+                            <br/>
+                                <label for="">Bucket Name</label>
+                                <input type="text" id="bname" name="bname" class="form-control" required>
+                                <br/>   
+                                <label for="">File Path (like.. e:/uploads) </label>    
+                                <input type="text"  name="pathname" class="form-control" required>
+                                <br/>  <br/>   
+                            <input type="submit" class="btn btn-primary" value="Submit">
+                        </form>
+
+                    {% elif mdata.task == 6 %}   
+                        <h3>Download file from bucket</h3>                    
+                            
+                            <form action="task6" method="POST"  class="php-email-form">                        
+                                <br/>
+                                    <label for="lname">Bucket Name</label>
+                                    <input type="text" id="bname" name="bname" class="form-control" required>
+                                    <br/>   
+                                    <label for="fname">File Name </label>    
+                                    <input type="text"  name="fname" class="form-control" required>
+                                    <br/>
+                                    <label for="dname">Destination Directory for download (like.. e:/downloads) </label>    
+                                    <input type="text"  name="dname" class="form-control" required>
+                                    <br/> 
+                                    <br/>   
+                                <input type="submit" class="btn btn-primary" value="Submit">
+                            </form>    
+                    {% elif mdata.task == 7 %}   
+                            <h3>Download all files from bucket</h3>                    
+                                
+                                <form action="task7" method="POST"  class="php-email-form">                        
+                                    <br/>
+                                        <label for="lname">Bucket Name</label>
+                                        <input type="text" id="bname" name="bname" class="form-control" required>
+                                        <br/> 
+                                        <label for="dname">Destination Directory for download (like.. e:/downloads) </label>    
+                                        <input type="text"  name="dname" class="form-control" required>
+                                        <br/> 
+                                        <br/>   
+                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                </form> 
+                    {% elif mdata.task == 8 %}   
+                                <h3>Listing Information about bucket</h3>                    
+                                    
+                                    <form action="task8" method="POST"  class="php-email-form">                        
+                                        <br/>
+                                            <label for="lname">Bucket Name</label>
+                                            <input type="text" id="bname" name="bname" class="form-control" required>
+                                            <br/>                                             
+                                            <br/>   
+                                        <input type="submit" class="btn btn-primary" value="Submit">
+                                    </form>   
+                                    {% if mdata.data %} 
+                                    {% if mdata.length > 0 %}
+                                    <br/>
+                                    <ul>                                              
+                                        {% for x in mdata.data %}
+                                        {% set size = x['Size'] / 1024 %}                                        
+                                            <li>
+                                                <b>Name</b> : &nbsp;{{x['Key']}} <br/>  <b>Size</b> : &nbsp;{{'%0.2f'| format(size)}} KB   <br/> <b>Owner</b> : &nbsp;{{x['Owner']['DisplayName']}}</li>
+                                        {% endfor %}
+                                    </ul> 
+                                    {% else %}  
+                                    <br/> <p>This bucket is empty.</p>
+                                    {% endif %}    
+                                    {% endif %}      
+                    {% elif mdata.task == 9 %}   
+                                    <h3>Delele bucket item</h3>                    
+                                        
+                                        <form action="task9" method="POST"  class="php-email-form">                        
+                                            <br/>
+                                                <label for="lname">Bucket Name</label>
+                                                <input type="text" id="bname" name="bname" class="form-control" required>
+                                                <br/> 
+                                                <label for="fname">File Name (To be deleted) </label>    
+                                                <input type="text"  name="fname" class="form-control" required>                                            
+                                                <br/>   
+                                            <input type="submit" class="btn btn-primary" value="Submit">
+                                        </form>   
+                    {% elif mdata.task == 10 %}   
+                                        <h3>Delele bucket </h3>                    
+                                            
+                                            <form action="task10" method="POST"  class="php-email-form">                        
+                                                <br/>
+                                                    <label for="lname">Bucket Name</label>
+                                                    <input type="text" id="bname" name="bname" class="form-control" required>
+                                                    <br/>                                                                                           
+                                                    <br/>   
+                                                <input type="submit" class="btn btn-primary" value="Submit">
+                                            </form>                                          
+                    {% elif mdata.task == 11 %}   
+                                            <h3>Delele bucket forcefully</h3>                    
+                                                
+                                                <form action="task11" method="POST"  class="php-email-form">                        
+                                                    <br/>
+                                                        <label for="lname">Bucket Name</label>
+                                                        <input type="text" id="bname" name="bname" class="form-control" required>
+                                                        <br/>                                                                                           
+                                                        <br/>   
+                                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                                </form>                   
+
+                    {% else %}              
+                    {% endif %}
+
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

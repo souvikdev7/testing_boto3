@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>BOTO - Home</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+  
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:400,300,700,900" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/icofont/icofont.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/venobox/venobox.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+ 
+  <!-- =======================================================
+  * Template Name: Amoeba - v2.0.0
+  * Template URL: https://bootstrapmade.com/free-one-page-bootstrap-template-amoeba/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="/"><span>BOTO AWS</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav class="nav-menu float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="/">Home</a></li>  
+          <li><a href="/task1">Add Bucket</a></li>          
+          <li><a href="/task2">Bucket List</a></li>           
+          <li class="drop-down"><a href="">Other Operations</a>
+            <ul>              
+              <li><a href="/task3">Upload file to bucket</a></li>  
+              <li><a href="/task4">Copy file from bucket</a></li>  
+              <li><a href="/task5">Upload files to bucket</a></li>  
+              <li><a href="/task6">Download file from bucket</a></li>  
+              <li><a href="/task7">Download all files from bucket</a></li>  
+              <li><a href="/task8">Information about bucket</a></li>              
+            </ul>
+          </li>
+          <li class="drop-down"><a href="">Delete Operations</a>
+            <ul>            
+              <li><a href="/task9">Delele bucket item</a></li>  
+              <li><a href="/task10">Delele bucket</a></li>  
+              <li><a href="/task11">Delele bucket forcefully</a></li>  
+            </ul>
+          </li>
+        </ul>
+      </nav><!-- .nav-menu -->
+      
+      
+
+    </div>
+  </header><!-- End #header -->
+
+  <!-- ======= Hero Section ======= -->
+
+
+  <main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        
+
+        <div class="row">
+          
+
+		  <div class="col-lg-6 col-md-12">
+			{% block content %}  
+	
+			{% endblock %}
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Boto AWS</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        
+      </div>
+    </div>
+  </footer>
+  <!-- End #footer -->
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/jquery.easing/jquery.easing.min.js') }}"></script>
+  <!--<script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/venobox/venobox.min.js') }}"></script>-->
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
